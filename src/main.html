@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>Wordle</title> 
     <link rel="stylesheet" type="text/css" href="main.css"> <!-- länkt till css. lägg in egen fil-->
+    
 
   </head>
 
@@ -14,9 +15,11 @@
     <h1>Wordle</h1> 
     <hr>
 
-
     <div id="rutnat">
         <!--gissning ord 1-->
+        Första gissning <input type="text" id="guess1"><br>
+            
+        <button onclick="func()">submit</button> 
         <div class="ord">
             <div class="ruta"></div>
             <div class="ruta"></div>
@@ -26,6 +29,9 @@
         </div>
 
         <!--gissning ord 2-->
+        <form>
+            Andra gissning: <input type="text" id="guess2"><br>
+        </form>
         <div class="ord">
             <div class="ruta"></div>
 
@@ -39,6 +45,9 @@
         </div>
 
         <!--gissning ord 3-->
+        <form>
+            Tredje gissning: <input type="text" id="guess3"><br>
+        </form>
         <div class="ord">
             <div class="ruta"> </div>
 
@@ -52,6 +61,9 @@
         </div>
 
         <!--gissning ord 4-->
+        <form>
+            Fjärde gissning: <input type="text" id="guess4"><br>
+        </form>
         <div class="ord">
             <div class="ruta"></div>
 
@@ -65,6 +77,9 @@
         </div>
 
         <!--gissning ord 5-->
+        <form>
+            Femte gissning: <input type="text" id="guess5"><br>
+        </form>
         <div class="ord">
             <div class="ruta"></div>
 
@@ -77,7 +92,10 @@
             <div class="ruta"></div>
         </div>
 
-        <!--gissning ord 5-->
+        <!--gissning ord 6-->
+        <form>
+            Sista gissning: <input type="text" name="guess6"><br>
+        </form>
         <div class="ord">
             <div class="ruta"></div>
 
@@ -90,7 +108,9 @@
             <div class="ruta"></div>
         </div>
     </div>
-    
+
+    <script src="main.js"></script>
+
 
   </body>
 </html>
