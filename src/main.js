@@ -11,16 +11,15 @@ var guess5;
 var guess6;
 
 
-
 rightWord = "ABCDE";
 let guessedWord = "ABCDF";
 const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
 
 const rightWordArray = [];
-rightWordArrayn= rightWord.charAt(5);
+rightWordArrayn= rightWord.split("");
 
 let guessedWordArray = [];
-guessedWordArray= guessedWord.charAt(5);
+guessedWordArray= guessedWord.split("");
 
 let green = 0;
 let yellow = 0;
@@ -52,6 +51,10 @@ function checkLetters(guessedWordArray, rightWordArray) {
 
 }
 
-function checkForYellowLetters2() {
-
+function readFromLexikon() //this is convert to array
+{
+    var fs = require("fs")
+    var text = fs.readFileSync("./svenska-ord.txt").toString('utf-8') //reads from file, return buffer and convert to string
+    var word = text.split("\n"); //separate word by different rows
 }
+
