@@ -51,10 +51,17 @@ function checkLetters(guessedWordArray, rightWordArray) {
 
 }
 
-function readFromLexikon() //this is convert to array
+/**
+ * This function read from "svenska-ord.txt converts each row to an element in an array and returns random element
+ * @returns word, an element in the lexikonArray
+ */
+function getWordFromLexikon() //this is convert to array
 {
-    var fs = require("fs")
-    var text = fs.readFileSync("./svenska-ord.txt").toString('utf-8') //reads from file, return buffer and convert to string
-    var word = text.split("\n"); //separate word by different rows
+    const fs = require("fs");
+    const text = fs.readFileSync("./svenska-ord.txt").toString('utf-8'); //reads from file, return buffer and convert to string
+    const lexikon = text.split("\n"); //separate word by different rows
+    let word;
+
+    return word = lexikon[Math.floor(Math.random() * words.length)]; //get random word between index 0 and length
 }
 
