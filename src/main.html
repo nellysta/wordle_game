@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Wordle</title> 
     <link rel="stylesheet" type="text/css" href="main.css"> <!-- länkt till css. lägg in egen fil-->
-    <script src="main.js"></script>
+    
 
   </head>
 
@@ -17,8 +17,6 @@
 
     <div id="rutnat">
         <!--gissning ord 1-->
-        Första gissning <input type="text" id="guess1"><br>
-        <button onclick="writeOutAWord1()">submit</button> 
         <div class="ord">
             <div class="ruta"></div>
             <div class="ruta"></div>
@@ -28,9 +26,6 @@
         </div>
 
         <!--gissning ord 2-->
-        Andra gissning: <input type="text" id="guess2"><br>
-        <button onclick="writeOutAWord2()">submit</button> 
-       
         <div class="ord">
             <div class="ruta"></div>
 
@@ -44,10 +39,6 @@
         </div>
 
         <!--gissning ord 3-->
-
-        Tredje gissning: <input type="text" id="guess3"><br>
-        <button onclick="writeOutAWord3()">submit</button> 
-
         <div class="ord">
             <div class="ruta"> </div>
 
@@ -61,10 +52,6 @@
         </div>
 
         <!--gissning ord 4-->
-
-        Fjärde gissning: <input type="text" id="guess4"><br>
-        <button onclick="writeOutAWord4()">submit</button> 
- 
         <div class="ord">
             <div class="ruta"></div>
 
@@ -78,10 +65,6 @@
         </div>
 
         <!--gissning ord 5-->
-
-        Femte gissning: <input type="text" id="guess5"><br>
-        <button onclick="writeOutAWord5()">submit</button> 
-
         <div class="ord">
             <div class="ruta"></div>
 
@@ -95,10 +78,6 @@
         </div>
 
         <!--gissning ord 6-->
-
-        Sista gissning: <input type="text" id="guess6"><br>
-        <button onclick="writeOutAWord6()">submit</button> 
-
         <div class="ord">
             <div class="ruta"></div>
 
@@ -112,9 +91,12 @@
         </div>
     </div>
 
+    <label>Skriv in din gissning:</label><br>
+    <input type="text" id="guess">
+    <button type="button" id="knapp">submit</button>
+   
     
-
-
+    <script src="main.js"></script>
   </body>
 </html>
 
