@@ -9,7 +9,6 @@ var guess4;
 var guess5;
 var guess6;
 
-var guessCounter = 0;
 var guessCount = 0;
 
 // alla rutor i en array
@@ -101,20 +100,6 @@ document.getElementById("knapp").onclick = function(){
         guess6 = document.getElementById("guess").value;
         guess = guess6;
     } 
-    writeOutAWord(guess,guessCounter);
-    guessCounter++;
-};
-
-rightWord = "ABCDE";
-let guessedWord = "ABCDF";
-const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
-
-const rightWordArray = [];
-rightWordArrayn= rightWord.split("");
-
-let guessedWordArray = [];
-guessedWordArray= guessedWord.split("");
-
     writeOutAWord(guess,guessCount);
 
     // Array with each letter of the guessed word as one element
@@ -128,23 +113,6 @@ guessedWordArray= guessedWord.split("");
     guessCount++;
 };
 
-/**
- * This function read from "svenska-ord.txt, converts each row to an element in an array and returns filtered array
- * @returns word, an element in the lexikonArray
- */
-function handleWordFromLexikon() {
-    const fs = require("fs");
-    const text = fs.readFileSync("./svenska-ord.txt").toString('utf-8'); //reads from file, return buffer and convert to string
-    const lexikon = text.split("\n"); //separate word by different rows
-    return lexikon.filter(str => str.length ===  5) //only return 5 letter words
-}
 
-/**
- * Get random word from lexikon
- * @returns {string}
- */
-function getWordFromLexikon()
-{
-    let words = handleWordFromLexikon()
-    return words[Math.floor(Math.random() * words.length)];
-}
+
+
