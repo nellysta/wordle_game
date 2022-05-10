@@ -112,53 +112,16 @@ document.getElementById("knapp").onclick = function(){
     
     guessCount++;
 
+
+    // feedback-messages to player
+    if (guess === rightWord){
+        setTimeout(() => {  win(); }, 500);      // wait for guess to be written out before congrats-message in printed
+    }
+
     if(guessCount === 6){                   // after 6 guesses, the player has lost the game. 
         setTimeout(() => {  gameOver(); }, 500);      // wait for guess to be written out before gameover-message in printed
     }
 };
-
-
-
-
-// when user has used all their guesses
-function gameOver(){
-    
-    // delete everything inside of the "input"-div
-    var inputDiv = document.getElementById("inputBox");
-    var knapp = inputDiv.getElementsByTagName("button")[0];
-    var inputField = inputDiv.getElementsByTagName("input")[0];
-    var text = inputDiv.getElementsByTagName("label")[0];
-    inputDiv.removeChild(knapp);
-    inputDiv.removeChild(inputField);
-    inputDiv.removeChild(text);
-
-    // create a div where a game over-message is printed
-    var gameOverBox = document.createElement("div");
-    gameOverBox.style.width = "375px";
-    gameOverBox.style.height = "130px";
-    gameOverBox.style.backgroundColor = "pink";
-    gameOverBox.style.position = "absolute";
-    document.getElementById("feedback").append(gameOverBox);
-
-    // GAME OVER is printed inside the box
-    var title = document.createElement("h2");
-    title.innerHTML = "GAME OVER";
-    gameOverBox.appendChild(title);
-    title.style.textAlign = "center";
-
-    // text that explain that you have lost is printed
-    var moreText = document.createElement("p");
-    var explainingText = "Du har använt alla dina gissningar och har förlorat spelet. Det korrekta ordet var: " + rightWord;
-    moreText.innerHTML = explainingText;
-    gameOverBox.appendChild(moreText);
-    moreText.style.textAlign = "center";
-}
-
-
-// when user has guessed the correct word and therefor win
-function win(){
-    // not yet implemented
-}
 
 
 
