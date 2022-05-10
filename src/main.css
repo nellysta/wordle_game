@@ -17,6 +17,13 @@
     text-align: center;
 }
 
+.gameOver{
+    height: 500px;
+    width: 500px;
+    background-color: pink;
+    display: inline;
+}
+
 
 
 
