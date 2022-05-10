@@ -111,7 +111,25 @@ document.getElementById("knapp").onclick = function(){
     checkLetters(guessedWordArray,rightWordArray);
     
     guessCount++;
+
+    if(guessCount === 6){                   // after 6 guesses, the player has lost the game. 
+        setTimeout(() => {  gameOver(); }, 500);      // wait for guess to be written out before gameover-message in printed
+    }
 };
+
+
+
+
+// when user has used all their guesses
+function gameOver(){
+    alert("GAME OVER! Du har använt alla dina gissningar och har förlorat spelet. Det riktiga order var: " + rightWord);
+}
+
+
+// when user has guessed the correct word and therefor win
+function win(){
+    // not yet implemented
+}
 
 
 
