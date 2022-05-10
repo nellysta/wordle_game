@@ -14,23 +14,25 @@ var guessCount = 0;
 // alla rutor i en array
 var boxes = document.getElementsByClassName('ruta');
 
-let green = 0;
-let yellow = 0;
-let grey = 0;
+//let green = 0;
+//let yellow = 0;
+//let grey = 0;
+
+var rightWord;
 
 
 // Array with each letter of the right word as one element
 var rightWordArray = [5];
 const rightWordPromise = getWordFromLexikon()  //Created a promise
-rightWordPromise.then(rightWord => { //
+rightWordPromise.then(rightWord => {
     const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
     for (i=0;i<5;i++){
         rightWordArray[i] = rightWord.charAt(i);
     }
     // array of the boxes
-    var boxes = document.getElementsByClassName("ruta");
-
+    return rightWord;
 })
+
 
 /**
  * This function compares word from user with correct word
@@ -41,13 +43,13 @@ function checkLetters(guessedWordArray, rightWordArray) {
    for(let i = 0; i < guessedWordArray.length; i++ ){
        var box = boxes[5*guessCount + i];
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
-           green++;
+          // green++;
            box.style.backgroundColor = "green";    // change color of box to green
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
-           yellow++;
+           //yellow++;
            box.style.backgroundColor = "yellow"; // change color of box to yellow
         }   else{ //letter is not the same
-           grey++;
+           //grey++;
            box.style.backgroundColor = "grey"; // change color of box to grey
         }
     }
