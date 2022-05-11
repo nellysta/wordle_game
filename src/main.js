@@ -94,6 +94,13 @@ document.getElementById("knapp").onclick = function(){
         guess6 = document.getElementById("guess").value;
         guess = guess6;
     } 
+    if (guess.length != 5){
+        //Insert error message here
+    }
+    else if (checkWordInLexikon == false){
+        //Insert error message here
+    }
+
     writeOutAWord(guess,guessCount);
 
     // Array with each letter of the guessed word as one element
@@ -125,6 +132,14 @@ async function handleWordFromLexikon() {
 async function getWordFromLexikon() {
     let words = await handleWordFromLexikon()
     return words[Math.floor(Math.random() * words.length)];
+}
+
+/**
+ * Checks that the guessed word is in the lexikon
+ */
+function checkWordInLexikon(guess) {
+    let words = handleWorddsFromLexikon()
+    return words.includes(guess);
 }
 
 
