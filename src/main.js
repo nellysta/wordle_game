@@ -94,11 +94,9 @@ document.getElementById("knapp").onclick = function(){
         guess6 = document.getElementById("guess").value;
         guess = guess6;
     } 
-    if (guess.length != 5){
-        //Insert error message here
-    }
-    else if (checkWordInLexikon == false){
-        //Insert error message here
+    document.getElementById("input_error").style.display='none';
+    if (guess.length != 5 || checkWordInLexikon == false){
+        document.getElementById("input_error").style.display='block';
     }
 
     writeOutAWord(guess,guessCount);
