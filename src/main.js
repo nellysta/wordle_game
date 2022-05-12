@@ -1,5 +1,5 @@
 // the looked for word
-var rightWord;
+//const rightWord;
 
 // save all guesses
 var guess1;
@@ -14,53 +14,47 @@ var guessCount = 0;
 // alla rutor i en array
 var boxes = document.getElementsByClassName('ruta');
 
+//let green = 0;
+//let yellow = 0;
+//let grey = 0;
 
-rightWord = "matte";
-const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
+var rightWord;
 
 
 // Array with each letter of the right word as one element
 var rightWordArray = [5];
-for (i=0;i<5;i++){
-    rightWordArray[i] = rightWord.charAt(i);
-}
+const rightWordPromise = getWordFromLexikon()  //Created a promise
+rightWordPromise.then(rightWord => {
+    const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
+    for (i=0;i<5;i++){
+        rightWordArray[i] = rightWord.charAt(i);
+    }
+    // array of the boxes
+    return rightWord;
+})
 
-
-let green = 0;
-let yellow = 0;
-let grey = 0;
-
-
-// array of the boxes
-var boxes = document.getElementsByClassName("ruta");
 
 /**
  * This function compares word from user with correct word
  * @param guessedWordArray
  * @param rightWordArray
- * @param guess         guess number where the first guess is 0
  */
-
 function checkLetters(guessedWordArray, rightWordArray) {
    for(let i = 0; i < guessedWordArray.length; i++ ){
        var box = boxes[5*guessCount + i];
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
-           green++;
+          // green++;
            box.style.backgroundColor = "green";    // change color of box to green
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
-           yellow++;
+           //yellow++;
            box.style.backgroundColor = "yellow"; // change color of box to yellow
         }   else{ //letter is not the same
-           grey++;
+           //grey++;
            box.style.backgroundColor = "grey"; // change color of box to grey
         }
     }
 
 }
-
-
-
-// function checkForYellowLetters2() {}
 
 // function that writes out a letter in one of the boxes
 function writeOutLetter(row, index, inputBokstav){
@@ -115,22 +109,21 @@ document.getElementById("knapp").onclick = function(){
 
 /**
  * This function read from "svenska-ord.txt, converts each row to an element in an array and returns filtered array
- * @returns word, an element in the lexikonArray
+ * @returns lexikon, a filtered array
  */
-function handleWordFromLexikon() {
-    const fs = require("fs");
-    const text = fs.readFileSync("./svenska-ord.txt").toString('utf-8'); //reads from file, return buffer and convert to string
-    const lexikon = text.split("\n"); //separate word by different rows
-    return lexikon.filter(str => str.length ===  5) //only return 5 letter words
+async function handleWordFromLexikon() {
+    let txt = await fetch('svenska-ord.txt').then(response => response.text())
+        .then(text => text.split("\n"))
+        .then(text => text.filter(str => str.length === 5))
+    return txt;
 }
 
 /**
  * Get random word from lexikon
- * @returns {string}
+ * @returns a random word
  */
-function getWordFromLexikon()
-{
-    let words = handleWordFromLexikon()
+async function getWordFromLexikon() {
+    let words = await handleWordFromLexikon()
     return words[Math.floor(Math.random() * words.length)];
 }
 
