@@ -73,7 +73,7 @@ function writeOutAWord(guess, row){
 }
 
 // wait for guess to be sumbitted
-document.getElementById("knapp").onclick = function(){
+document.getElementById("knapp").onclick = async function(){
     var guess;
 
     // assign input value to guess variable
@@ -97,9 +97,12 @@ document.getElementById("knapp").onclick = function(){
         guess = guess6;
     } 
     document.getElementById("input_error").style.display='none';
-    if (guess.length != 5 || checkWordInLexikon(guess) == false){
+
+    // checks if word is lexicon, gives error message and breaks function if not
+    let wordInLexikon = await checkWordInLexikon(guess)
+    if (wordInLexikon == false){
         document.getElementById("input_error").style.display='block';
-        return false;
+        return;
     }
 
     writeOutAWord(guess,guessCount);
@@ -148,8 +151,9 @@ async function getWordFromLexikon() {
 /**
  * Checks that the guessed word is in the lexikon
  */
-function checkWordInLexikon(guess) {
-    let words = handleWordsFromLexikon()
+async function checkWordInLexikon(guess) {
+    let words = await handleWordFromLexikon()
+
     return words.includes(guess);
 }
 
