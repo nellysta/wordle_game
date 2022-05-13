@@ -95,8 +95,9 @@ document.getElementById("knapp").onclick = function(){
         guess = guess6;
     } 
     document.getElementById("input_error").style.display='none';
-    if (guess.length != 5 || checkWordInLexikon == false){
+    if (guess.length != 5 || checkWordInLexikon(guess) == false){
         document.getElementById("input_error").style.display='block';
+        return false;
     }
 
     writeOutAWord(guess,guessCount);
@@ -136,7 +137,7 @@ async function getWordFromLexikon() {
  * Checks that the guessed word is in the lexikon
  */
 function checkWordInLexikon(guess) {
-    let words = handleWorddsFromLexikon()
+    let words = handleWordsFromLexikon()
     return words.includes(guess);
 }
 
