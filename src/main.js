@@ -24,13 +24,15 @@ var rightWord;
 // Array with each letter of the right word as one element
 var rightWordArray = [5];
 const rightWordPromise = getWordFromLexikon()  //Created a promise
-rightWordPromise.then(rightWord => {
+rightWordPromise.then(randomRightWord => {
     const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
     for (i=0;i<5;i++){
-        rightWordArray[i] = rightWord.charAt(i);
+        rightWordArray[i] = randomRightWord.charAt(i);
     }
     // array of the boxes
-    return rightWord;
+    rightWord= randomRightWord
+    console.log(rightWord)
+    console.log(rightWordArray)
 })
 
 
