@@ -24,13 +24,15 @@ var rightWord;
 // Array with each letter of the right word as one element
 var rightWordArray = [5];
 const rightWordPromise = getWordFromLexikon()  //Created a promise
-rightWordPromise.then(rightWord => {
+rightWordPromise.then(randomRightWord => {
     const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
     for (i=0;i<5;i++){
-        rightWordArray[i] = rightWord.charAt(i);
+        rightWordArray[i] = randomRightWord.charAt(i);
     }
     // array of the boxes
-    return rightWord;
+    rightWord= randomRightWord
+    console.log(rightWord)
+    console.log(rightWordArray)
 })
 
 
@@ -111,6 +113,16 @@ document.getElementById("knapp").onclick = function(){
     checkLetters(guessedWordArray,rightWordArray);
     
     guessCount++;
+
+
+    // feedback-messages to player
+    if (guess === rightWord){
+        setTimeout(() => {  win(); }, 500);      // wait for guess to be written out before congrats-message in printed
+    }
+
+    if(guessCount === 6){                   // after 6 guesses, the player has lost the game. 
+        setTimeout(() => {  gameOver(); }, 500);      // wait for guess to be written out before gameover-message in printed
+    }
 };
 
 /**
