@@ -107,6 +107,16 @@ document.getElementById("knapp").onclick = function(){
     checkLetters(guessedWordArray,rightWordArray);
     
     guessCount++;
+
+
+    // feedback-messages to player
+    if (guess === rightWord){
+        setTimeout(() => {  win(); }, 500);      // wait for guess to be written out before congrats-message in printed
+    }
+
+    if(guessCount === 6){                   // after 6 guesses, the player has lost the game. 
+        setTimeout(() => {  gameOver(); }, 500);      // wait for guess to be written out before gameover-message in printed
+    }
 };
 
 /**
