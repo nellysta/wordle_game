@@ -25,12 +25,11 @@ var rightWord;
 var rightWordArray = [5];
 const rightWordPromise = getWordFromLexikon()  //Created a promise
 rightWordPromise.then(randomRightWord => {
-    const answers = [guess1,guess2,guess3,guess4,guess5,guess6];
-    for (i=0;i<5;i++){
-        rightWordArray[i] = randomRightWord.charAt(i);
-    }
     // array of the boxes
-    rightWord= randomRightWord
+    rightWord = randomRightWord.toUpperCase();    // save value in rightWord and turn to upperCase
+    for (i=0;i<5;i++){
+        rightWordArray[i] = rightWord.charAt(i);
+    }
     console.log(rightWord)
     console.log(rightWordArray)
 })
@@ -76,26 +75,28 @@ function writeOutAWord(guess, row){
 document.getElementById("knapp").onclick = function(){
     var guess;
 
-    // assign input value to guess variable
+    // assign input value to guess variable, while making the guess uppercase
     if (guessCount === 0){
         guess1 = document.getElementById("guess").value;
-        guess = guess1;
+        guess = guess1.toUpperCase();
     } else if (guessCount === 1){
         guess2 = document.getElementById("guess").value;
-        guess = guess2;
+        guess = guess2.toUpperCase();
     } else if (guessCount === 2){
         guess3 = document.getElementById("guess").value;
-        guess = guess3;
+        guess = guess3.toUpperCase();
     } else if (guessCount === 3){
         guess4 = document.getElementById("guess").value;
-        guess = guess4;
+        guess = guess4.toUpperCase();
     } else if (guessCount === 4){
         guess5 = document.getElementById("guess").value;
-        guess = guess5;
+        guess = guess5.toUpperCase();
     } else if (guessCount === 5){
         guess6 = document.getElementById("guess").value;
-        guess = guess6;
-    } 
+        guess = guess6.toUpperCase();
+    }
+
+
     writeOutAWord(guess,guessCount);
 
     // Array with each letter of the guessed word as one element
