@@ -154,7 +154,7 @@ async function getWordFromLexikon() {
 async function checkWordInLexikon(guess) {
     let words = await handleWordFromLexikon()
 
-    return words.includes(guess);
+    return words.includes(guess.toLowerCase());
 }
 
 
