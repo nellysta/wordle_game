@@ -72,7 +72,7 @@ function writeOutAWord(guess, row){
 }
 
 // wait for guess to be sumbitted
-document.getElementById("knapp").onclick = function(){
+document.getElementById("knapp").onclick = async function(){
     var guess;
 
     // assign input value to guess variable, while making the guess uppercase
@@ -96,6 +96,14 @@ document.getElementById("knapp").onclick = function(){
         guess = guess6.toUpperCase();
     }
 
+    document.getElementById("input_error").style.display='none';
+
+    // checks if word is lexicon, gives error message and breaks function if not
+    let wordInLexikon = await checkWordInLexikon(guess)
+    if (wordInLexikon == false){
+        document.getElementById("input_error").style.display='block';
+        return;
+    }
 
     writeOutAWord(guess,guessCount);
 
@@ -138,6 +146,15 @@ async function handleWordFromLexikon() {
 async function getWordFromLexikon() {
     let words = await handleWordFromLexikon()
     return words[Math.floor(Math.random() * words.length)];
+}
+
+/**
+ * Checks that the guessed word is in the lexikon
+ */
+async function checkWordInLexikon(guess) {
+    let words = await handleWordFromLexikon()
+
+    return words.includes(guess.toLowerCase());
 }
 
 
