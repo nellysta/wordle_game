@@ -57,4 +57,12 @@ function terminateGame(){
     feedbackBox.style.height = "130px";
     feedbackBox.style.backgroundColor = "pink";
     feedbackBox.style.position = "absolute";
+
+    document.getElementById("replayButton").style.display='block';
+    document.getElementById("replayButton").style.position = "static";
 }
+
+//when you press the button to play again, the page is refreshed
+document.getElementById("replayButton").onclick = function(){
+    location.reload();
+};
