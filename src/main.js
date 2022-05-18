@@ -45,13 +45,13 @@ function checkLetters(guessedWordArray, rightWordArray) {
        var box = boxes[5*guessCount + i];
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
           // green++;
-           box.style.backgroundColor = "green";    // change color of box to green
+           box.style.backgroundColor = "#50C878";    // change color of box to green
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
            //yellow++;
-           box.style.backgroundColor = "yellow"; // change color of box to yellow
+           box.style.backgroundColor = "#FFD428 "; // change color of box to yellow
         }   else{ //letter is not the same
            //grey++;
-           box.style.backgroundColor = "grey"; // change color of box to grey
+           box.style.backgroundColor = "#808080"; // change color of box to grey
         }
     }
 
