@@ -14,11 +14,31 @@ var guessCount = 0;
 // alla rutor i en array
 var boxes = document.getElementsByClassName('ruta');
 
+let keyboard = document.getElementById('tangentbord')
+let keys = keyboard.getElementsByTagName('button');
+
 //let green = 0;
 //let yellow = 0;
 //let grey = 0;
 
 var rightWord;
+
+
+function getKeys(keys) {
+    //get each key that has been clicked on keyboard
+    for(let i = 0; i < keys.length; i++ ) {
+        keys[i].onclick = ({target}) => {
+            const key = target.getAttribute('data-key')
+            // assign input value to guess variable, while making the guess uppercase
+            if(key != null)
+            {
+                var guessElement = document.getElementById("guess");
+                guessElement.value = guessElement.value + key;
+            }
+        };
+    }
+    return keys;
+}
 
 
 // Array with each letter of the right word as one element
@@ -30,6 +50,7 @@ rightWordPromise.then(randomRightWord => {
     for (i=0;i<5;i++){
         rightWordArray[i] = rightWord.charAt(i);
     }
+    console.log(getKeys(keys))
     console.log(rightWord)
     console.log(rightWordArray)
 })
@@ -42,16 +63,22 @@ rightWordPromise.then(randomRightWord => {
  */
 function checkLetters(guessedWordArray, rightWordArray) {
    for(let i = 0; i < guessedWordArray.length; i++ ){
+       const keySelector = "[data-key =" + guessedWordArray[i].toLowerCase() + "]";
        var box = boxes[5*guessCount + i];
+       const keyElement = document.querySelector(keySelector);
+       console.log(keySelector)
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
           // green++;
            box.style.backgroundColor = "green";    // change color of box to green
+           keyElement.style.backgroundColor = "green";
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
            //yellow++;
            box.style.backgroundColor = "yellow"; // change color of box to yellow
+           keyElement.style.backgroundColor = "yellow";
         }   else{ //letter is not the same
            //grey++;
            box.style.backgroundColor = "grey"; // change color of box to grey
+           keyElement.style.backgroundColor = "grey";
         }
     }
 
