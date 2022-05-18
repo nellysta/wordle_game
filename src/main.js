@@ -136,6 +136,7 @@ async function handleWordFromLexikon() {
     let txt = await fetch('svenska-ord.txt').then(response => response.text())
         .then(text => text.split("\n"))
         .then(text => text.filter(str => str.length === 5))
+        .then(text => text.filter(str => validLetters(str.toLowerCase())))
     return txt;
 }
 
@@ -156,6 +157,26 @@ async function checkWordInLexikon(guess) {
 
     return words.includes(guess.toLowerCase());
 }
+
+
+/**
+ * check that the letters of a word exist in the swedish alphabet
+ * @param word
+ * @returns {boolean|boolean|*|boolean}
+ */
+function validLetters(word){
+    alfabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'];
+    bool = true;
+    for (i=0; i<word.length; i++){
+        bool = alfabet.includes(word.charAt(i));
+        if (bool === false){
+            return bool;
+        }
+    }
+    return bool;
+}
+
 
 
 
