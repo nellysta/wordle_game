@@ -68,28 +68,19 @@ function checkLetters(guessedWordArray, rightWordArray) {
        const keyElement = document.querySelector(keySelector);
        console.log(keySelector)
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
-          // green++;
-
-           box.style.backgroundColor = "green";    // change color of box to green
-           keyElement.style.backgroundColor = "green";
-        }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
-           //yellow++;
-           box.style.backgroundColor = "yellow"; // change color of box to yellow
-           keyElement.style.backgroundColor = "yellow";
-        }   else{ //letter is not the same
-           //grey++;
-           box.style.backgroundColor = "grey"; // change color of box to grey
-           keyElement.style.backgroundColor = "grey";
-
            box.style.backgroundColor = "#50C878";    // change color of box to green
+           keyElement.style.backgroundColor = "#50C878";
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
-           //yellow++;
-           box.style.backgroundColor = "#FFD428 "; // change color of box to yellow
+           
+           box.style.backgroundColor = "#FFD428"; // change color of box to yellow
+           keyElement.style.backgroundColor = "#FFD428";
+            
         }   else{ //letter is not the same
-           //grey++;
+           
            box.style.backgroundColor = "#808080"; // change color of box to grey
-
-        }
+           keyElement.style.backgroundColor = "#808080";
+          
+        }  
     }
 
 }
