@@ -64,7 +64,7 @@ function terminateGame(winning){
     // create a div where a feedback-message will be printed to the player
     var feedbackBox = document.getElementById("feedback");
     feedbackBox.style.width = "375px";
-    feedbackBox.style.height = "130px";
+    feedbackBox.style.height = "140px";
     feedbackBox.style.backgroundColor = "pink";
     feedbackBox.style.position = "absolute";
 

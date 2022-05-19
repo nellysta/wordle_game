@@ -64,6 +64,8 @@
 #inputBox{
     height: 100px;
     width: 300px;
+    margin-top: 30px;
+    margin-left: 130px;
 }
 
 #inputBox input{
@@ -103,12 +105,14 @@
 
 #tangentbord{
     width: 400px;
-    margin-left: 210px;
+    margin-left: 82px;
 }
 
-:not(.childToBeKeptLast) {
-    order:-1;/* puts anything that has not this class up in front */
+#feedback button{
+    margin-left: 100px;
+    width: 175px;
 }
+
 
 
 
