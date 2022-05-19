@@ -144,7 +144,7 @@ document.getElementById("knapp").onclick = async function(){
     checkLetters(guessedWordArray,rightWordArray);
     
     guessCount++;
-
+    document.getElementById("guess").value = "";
 
     // feedback-messages to player
     if (guess === rightWord){
