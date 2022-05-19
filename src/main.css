@@ -63,6 +63,7 @@
 
 #inputBox{
     height: 100px;
+    width: 300px;
 }
 
 #inputBox input{
@@ -76,6 +77,44 @@
     height: 30px;
     margin-top: 0px;
 }
+
+#rutnat{
+    width: 355px;
+    height: 426px;
+    margin-left: 540px;
+}
+
+#oldScores{
+    margin-left: 200px;
+    height: 430px;
+    width: 160px;
+    outline-style: solid;
+    outline-color: dimgrey;
+    background-color: white;
+    outline-width: 2px;
+}
+#oldScores button{
+    height: 30px;
+}
+
+.parent div{
+    float: left;
+}
+
+#tangentbord{
+    width: 400px;
+    margin-left: 210px;
+}
+
+:not(.childToBeKeptLast) {
+    order:-1;/* puts anything that has not this class up in front */
+}
+
+
+
+
+
+
 
 
 

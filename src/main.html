@@ -15,138 +15,148 @@
     <h1 id="rubrik">Wordle</h1>
 
     <!--this is where the feedback will be printed (if the game is won/lost)-->
-    <div id="feedback"></div>
+    <div id="feedback">
+        <button hidden type="button" id="replayButton" class="childToBeKeptLast">Klicka för att spela igen!</button>
+    </div>
 
-    <div id="rutnat">
 
-        <!--gissning ord 1-->
-        <div class="ord">
-            <div class="ruta"></div>
-            <div class="ruta"></div>
-            <div class="ruta"></div>
-            <div class="ruta"></div>
-            <div class="ruta"></div>
-        </div>
+        <div class="parent">
+            <div id="rutnat">
 
-        <!--gissning ord 2-->
-        <div class="ord">
-            <div class="ruta"></div>
+                <!--gissning ord 1-->
+                <div class="ord">
+                    <div class="ruta"></div>
+                    <div class="ruta"></div>
+                    <div class="ruta"></div>
+                    <div class="ruta"></div>
+                    <div class="ruta"></div>
+                </div>
 
-            <div class="ruta"> </div>
+                <!--gissning ord 2-->
+                <div class="ord">
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"> </div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
-        </div>
+                    <div class="ruta"></div>
 
-        <!--gissning ord 3-->
-        <div class="ord">
-            <div class="ruta"> </div>
+                    <div class="ruta"></div>
+                </div>
 
-            <div class="ruta"></div>
+                <!--gissning ord 3-->
+                <div class="ord">
+                    <div class="ruta"> </div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
-        </div>
-        <!--gissning ord 4-->
-        <div class="ord">
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
+                </div>
+                <!--gissning ord 4-->
+                <div class="ord">
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
-        </div>
+                    <div class="ruta"></div>
 
-        <!--gissning ord 5-->
-        <div class="ord">
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
+                </div>
 
-            <div class="ruta"></div>
+                <!--gissning ord 5-->
+                <div class="ord">
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
-        </div>
+                    <div class="ruta"></div>
 
-        <!--gissning ord 6-->
-        <div class="ord">
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
+                </div>
 
-            <div class="ruta"></div>
+                <!--gissning ord 6-->
+                <div class="ord">
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
+                    <div class="ruta"></div>
 
-            <div class="ruta"></div>
-        </div>
+                    <div class="ruta"></div>
 
-        <div id = "tangentbord">
-            <div class = "tangentbords-rad">
-                <button data-key = "q">Q</button>
-                <button data-key = "w">W</button>
-                <button data-key = "e">E</button>
-                <button data-key = "r">R</button>
-                <button data-key = "t">T</button>
-                <button data-key = "y">Y</button>
-                <button data-key = "u">U</button>
-                <button data-key = "i">I</button>
-                <button data-key = "o">O</button>
-                <button data-key = "p">P</button>
-                <button data-key = "å">Å</button>
+                    <div class="ruta"></div>
+                </div>
+
+
+
             </div>
-        <div class = "tangentbords-rad">
-            <button data-key = "a">A</button>
-            <button data-key = "s">S</button>
-            <button data-key = "d">D</button>
-            <button data-key = "f">F</button>
-            <button data-key = "g">G</button>
-            <button data-key = "h">H</button>
-            <button data-key = "j">J</button>
-            <button data-key = "k">K</button>
-            <button data-key = "l">L</button>
-            <button data-key = "ö">Ö</button>
-            <button data-key = "ä">Ä</button>
-        </div>
-        <div class = "tangentbords-rad">
-            <button data-key = "z">Z</button>
-            <button data-key = "x">X</button>
-            <button data-key = "c">C</button>
-            <button data-key = "v">V</button>
-            <button data-key = "b">B</button>
-            <button data-key = "n">N</button>
-            <button data-key = "m">M</button>
-        </div>
-    </div>
-    </div>
 
-
-        <div id="inputBox">
-            <label>Skriv in din gissning:</label><br>
-            <input type="text" id="guess">
-            <button type="button" id="knapp">submit</button>
-            <p hidden id="input_error">Du måste skriva ett svenskt ord på fem bokstäver.</p>
+            <div id="oldScores"></div>
         </div>
 
-    </div>
-    <button hidden type="button" id="replayButton">Klicka för att spela igen!</button>
-
-    <div id="oldScores"></div>
 
 
+        <div class="parent">
+            <div id="inputBox">
+                <label>Skriv in din gissning:</label><br>
+                <input type="text" id="guess">
+                <button type="button" id="knapp">submit</button>
+                <p hidden id="input_error">Du måste skriva ett svenskt ord på fem bokstäver.</p>
+            </div>
 
-   
+            <div id = "tangentbord">
+                <div class = "tangentbords-rad">
+                    <button data-key = "q">Q</button>
+                    <button data-key = "w">W</button>
+                    <button data-key = "e">E</button>
+                    <button data-key = "r">R</button>
+                    <button data-key = "t">T</button>
+                    <button data-key = "y">Y</button>
+                    <button data-key = "u">U</button>
+                    <button data-key = "i">I</button>
+                    <button data-key = "o">O</button>
+                    <button data-key = "p">P</button>
+                    <button data-key = "å">Å</button>
+                </div>
+                <div class = "tangentbords-rad">
+                    <button data-key = "a">A</button>
+                    <button data-key = "s">S</button>
+                    <button data-key = "d">D</button>
+                    <button data-key = "f">F</button>
+                    <button data-key = "g">G</button>
+                    <button data-key = "h">H</button>
+                    <button data-key = "j">J</button>
+                    <button data-key = "k">K</button>
+                    <button data-key = "l">L</button>
+                    <button data-key = "ö">Ö</button>
+                    <button data-key = "ä">Ä</button>
+                </div>
+                <div class = "tangentbords-rad">
+                    <button data-key = "z">Z</button>
+                    <button data-key = "x">X</button>
+                    <button data-key = "c">C</button>
+                    <button data-key = "v">V</button>
+                    <button data-key = "b">B</button>
+                    <button data-key = "n">N</button>
+                    <button data-key = "m">M</button>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
     
     <script src="main.js"></script>
     <script src="feedback.js"></script>
