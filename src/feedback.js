@@ -1,6 +1,9 @@
+var oldPoints;
+//var oldWords = [];
+
 // when user has used all their guesses
 function gameOver(){
-    terminateGame();
+    terminateGame(false);
 
     var gameOverBox = document.getElementById("feedback");
 
@@ -21,7 +24,7 @@ function gameOver(){
 
 // when user has guessed the correct word and therefor win
 function win(){
-    terminateGame();
+    terminateGame(true);
 
     var winBox = document.getElementById("feedback");
 
@@ -37,11 +40,18 @@ function win(){
      moreText.innerHTML = explainingText;
      winBox.appendChild(moreText);
      moreText.style.textAlign = "center";
+
+     // text that tells you how many points you got
+     var pointText = document.createElement("p");
+     var points = 7 - guessCount;
+     pointText.innerHTML = "Du fick " + points + " poäng.";
+     winBox.appendChild(pointText);
+     pointText.style.textAlign = "center";
 }
 
 // the game is terminated (either due to win or loss). the player 
 // can't write any input words anymore
-function terminateGame(){
+function terminateGame(winning){
     // delete everything inside of the "input"-div
     var inputDiv = document.getElementById("inputBox");
     var knapp = inputDiv.getElementsByTagName("button")[0];
@@ -57,4 +67,88 @@ function terminateGame(){
     feedbackBox.style.height = "130px";
     feedbackBox.style.backgroundColor = "pink";
     feedbackBox.style.position = "absolute";
+
+    document.getElementById("replayButton").style.display='block';
+    document.getElementById("replayButton").style.position = "static";
+
+    saveResults(winning);
 }
+
+function saveResults(winning){
+    if (sessionStorage.getItem('pointKey') == null && sessionStorage.getItem('wordKey') == null){
+        oldPoints = [];
+        oldWords = [];
+    }
+    else if (sessionStorage.getItem('pointKey') != null && sessionStorage.getItem('wordKey') != null){
+        oldPoints = JSON.parse(sessionStorage.getItem('pointKey'));
+        oldWords = JSON.parse(sessionStorage.getItem('wordKey'));
+    }
+    else {
+        console.log()
+        throw "Unexpected error";
+    }
+
+    console.log(oldPoints);
+    console.log(oldWords);
+
+
+    points = 6 - guessCount;
+    if (winning == true){points++;}
+    
+    if (oldPoints != null && oldWords != null){
+        oldPoints.push(points);
+        oldWords.push(rightWord);
+    }
+    else if (oldPoints == null && oldWords == null){
+        oldPoints = [points];
+        oldWords = [rightWord];
+    }
+    else{
+        throw "Unexpected error";
+    }
+
+    sessionStorage.setItem('pointKey', JSON.stringify(oldPoints));
+    sessionStorage.setItem('wordKey', JSON.stringify(oldWords));
+
+    console.log(oldPoints);
+    console.log(oldWords);
+}
+
+//when you press the button to play again, the page is refreshed
+document.getElementById("replayButton").onclick = function(){
+    location.reload();
+};
+
+/**
+ * Shows the old functions
+ */
+ function displayOldPoints(){
+    if (sessionStorage.getItem('pointKey') == null && sessionStorage.getItem('wordKey') == null){
+        oldPoints = [];
+    }
+    else if (sessionStorage.getItem('pointKey') != null && sessionStorage.getItem('wordKey') != null){
+        oldPoints = JSON.parse(sessionStorage.getItem('pointKey'));
+        oldWords = JSON.parse(sessionStorage.getItem('wordKey'));
+    }
+    else {
+        throw "Unexpected error";
+    }
+    
+
+    var scoreBoard = document.getElementById("oldScores");
+
+    var pointsTitle = document.createElement("h2");
+    pointsTitle.innerHTML = "Tidigare spel";
+    scoreBoard.appendChild(pointsTitle)
+
+    for ( i = 0; i < oldPoints.length; i++){
+        var oldScore = document.createElement("p");
+        oldScore.innerHTML = "Ord: " + oldWords[i]+ "   Poäng: " + oldPoints[i];
+        scoreBoard.appendChild(oldScore);
+    }
+}
+
+window.onload = function()
+{
+    displayOldPoints();
+};
