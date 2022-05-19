@@ -6,15 +6,27 @@
     height: 75px;
     width: 75px;
     outline-style: solid;
-    outline-color: black;
+    outline-color: dimgrey;
     background-color: white;
     outline-width: 2px;
     float: left;
     display: inline;
 }
 
+
+
 .ruta h1{
     text-align: center;
+    outline-color: dimgrey;
+    outline-width: 5px;
+    color: white;
+    font-family: Arial;
+}
+
+#rubrik{
+    text-align: center;
+    font-size: 40px;
+    font-family: Copperplate;
 }
 
 #input_error{
@@ -37,6 +49,7 @@
     background-color: white;
     border-radius: 5px;
 }
+
 
 
 
