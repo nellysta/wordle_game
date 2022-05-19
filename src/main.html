@@ -12,7 +12,7 @@
   <body> 
     
     <hr>
-    <h1>Wordle</h1> 
+    <h1 id="rubrik">Wordle</h1>
     <hr>
 
 
@@ -20,6 +20,7 @@
     <div id="feedback"></div>
 
     <div id="rutnat">
+
         <!--gissning ord 1-->
         <div class="ord">
             <div class="ruta"></div>
@@ -92,14 +93,18 @@
 
             <div class="ruta"></div>
         </div>
+
+        <div id="inputBox">
+            <label>Skriv in din gissning:</label><br>
+            <input type="text" id="guess">
+            <button type="button" id="knapp">submit</button>
+            <p hidden id="input_error">Du måste skriva ett svenskt ord på fem bokstäver.</p>
+        </div>
+
     </div>
 
-    <div id="inputBox">
-        <label>Skriv in din gissning:</label><br>
-        <input type="text" id="guess">
-        <button type="button" id="knapp">submit</button>
-    </div>
-    <p hidden id="input_error">Du måste skriva ett svenskt ord på fem bokstäver.</p>
+
+
    
     
     <script src="main.js"></script>
