@@ -33,6 +33,24 @@
     color: red;
 }
 
+#tangentbord {
+    height: 10px;
+    margin: 10px;
+}
+
+.tangentbords-rad {
+    touch-action: manipulation;
+    display: flex;
+    justify-content: center;
+}
+
+.tangentbords-rad button {
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
 
 
 
