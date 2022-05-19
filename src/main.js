@@ -14,11 +14,31 @@ var guessCount = 0;
 // alla rutor i en array
 var boxes = document.getElementsByClassName('ruta');
 
+let keyboard = document.getElementById('tangentbord')
+let keys = keyboard.getElementsByTagName('button');
+
 //let green = 0;
 //let yellow = 0;
 //let grey = 0;
 
 var rightWord;
+
+
+function getKeys(keys) {
+    //get each key that has been clicked on keyboard
+    for(let i = 0; i < keys.length; i++ ) {
+        keys[i].onclick = ({target}) => {
+            const key = target.getAttribute('data-key')
+            // assign input value to guess variable, while making the guess uppercase
+            if(key != null)
+            {
+                var guessElement = document.getElementById("guess");
+                guessElement.value = guessElement.value + key;
+            }
+        };
+    }
+    return keys;
+}
 
 
 // Array with each letter of the right word as one element
@@ -30,6 +50,7 @@ rightWordPromise.then(randomRightWord => {
     for (i=0;i<5;i++){
         rightWordArray[i] = rightWord.charAt(i);
     }
+    console.log(getKeys(keys))
     console.log(rightWord)
     console.log(rightWordArray)
 })
@@ -42,17 +63,24 @@ rightWordPromise.then(randomRightWord => {
  */
 function checkLetters(guessedWordArray, rightWordArray) {
    for(let i = 0; i < guessedWordArray.length; i++ ){
+       const keySelector = "[data-key =" + guessedWordArray[i].toLowerCase() + "]";
        var box = boxes[5*guessCount + i];
+       const keyElement = document.querySelector(keySelector);
+       console.log(keySelector)
        if(guessedWordArray[i] === rightWordArray[i]) { //current character in guessedWord is same as actual
-          // green++;
-           box.style.backgroundColor = "green";    // change color of box to green
+           box.style.backgroundColor = "#50C878";    // change color of box to green
+           keyElement.style.backgroundColor = "#50C878";
         }   else if(rightWordArray.includes(guessedWordArray[i])) { //check if guess word includes correct letter
-           //yellow++;
-           box.style.backgroundColor = "yellow"; // change color of box to yellow
+           
+           box.style.backgroundColor = "#FFD428"; // change color of box to yellow
+           keyElement.style.backgroundColor = "#FFD428";
+            
         }   else{ //letter is not the same
-           //grey++;
-           box.style.backgroundColor = "grey"; // change color of box to grey
-        }
+           
+           box.style.backgroundColor = "#808080"; // change color of box to grey
+           keyElement.style.backgroundColor = "#808080";
+          
+        }  
     }
 
 }
@@ -136,6 +164,7 @@ async function handleWordFromLexikon() {
     let txt = await fetch('svenska-ord.txt').then(response => response.text())
         .then(text => text.split("\n"))
         .then(text => text.filter(str => str.length === 5))
+        .then(text => text.filter(str => validLetters(str.toLowerCase())))
     return txt;
 }
 
@@ -156,6 +185,26 @@ async function checkWordInLexikon(guess) {
 
     return words.includes(guess.toLowerCase());
 }
+
+
+/**
+ * check that the letters of a word exist in the swedish alphabet
+ * @param word
+ * @returns {boolean|boolean|*|boolean}
+ */
+function validLetters(word){
+    alfabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'];
+    bool = true;
+    for (i=0; i<word.length; i++){
+        bool = alfabet.includes(word.charAt(i));
+        if (bool === false){
+            return bool;
+        }
+    }
+    return bool;
+}
+
 
 
 
